@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    // This challenge has its own access code — see js/tutorial-login.js.
+    (function () {
+      try {
+        if (localStorage.getItem("pqp_access_granted") !== "yes") {
+          location.replace("tutorial-login.html?next=" + encodeURIComponent(location.pathname + location.search));
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#173f5f" />
+  <meta name="description" content="Worked multiple-choice problems on periodic review inventory, quality management, and aggregate production planning, with a targeted hint for every wrong answer." />
+  <title>The Periodic Review, Quality &amp; Planning Challenge | Interactive Teaching Platform</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/om-challenge.css" />
+  <link rel="stylesheet" href="vendor/katex/katex.min.css" />
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script defer src="vendor/katex/auto-render.min.js"></script>
+</head>
+<body class="game-page" data-access="gated">
+
+  <div id="app-content">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav class="navbar" aria-label="Primary">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+          <span class="nav-logo-badge"><img src="assets/examples/iimb-logo.png" alt="IIM Bangalore" class="nav-logo-img" /></span>
+          <span data-config="shortTitle">Teaching Platform</span>
+        </a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </div>
+    </nav>
+
+    <header class="om-hero">
+      <div class="om-hero-inner">
+        <div>
+          <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Interactive activity</div>
+          <span class="game-kicker">Periodic review, quality control, and aggregate planning</span>
+          <h1>The Periodic Review, Quality &amp; Planning Challenge</h1>
+          <p>Worked problems spanning three core OM topics: periodic review inventory policies, statistical quality control, and aggregate production planning. Pick an answer — if it's wrong, you get a hint aimed at exactly that mistake, and you can try again. Get it right and the full worked solution unlocks.</p>
+        </div>
+        <div class="om-hero-badge" aria-hidden="true">
+          <span>Q</span>
+          <strong id="pqp-hero-count">&ndash;</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="om-container container" id="main-content" tabindex="-1">
+      <div id="pqp-live" class="sr-only" aria-live="polite"></div>
+
+      <div class="om-progress-row">
+        <div class="om-progress-track" id="pqp-progress-track"></div>
+        <span class="om-progress-label" id="pqp-progress-label">Question 1</span>
+      </div>
+
+      <section class="om-question-card" id="pqp-question-panel" aria-live="polite"></section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-brand" data-config="shortTitle">Teaching Platform</a>
+        <p data-config="footerText">Built for students and shared for adaptation.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/site-config.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/pqp-challenge.js"></script>
+  <script>
+    (function () {
+      var count = typeof PQP_CHALLENGE_QUESTIONS !== "undefined" ? PQP_CHALLENGE_QUESTIONS.length : 0;
+      var badge = document.getElementById("pqp-hero-count");
+      if (badge) badge.textContent = count > 0 ? "1–" + count : "Soon";
+    })();
+  </script>
+</body>
+</html>
