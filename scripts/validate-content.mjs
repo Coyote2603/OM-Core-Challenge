@@ -87,11 +87,19 @@ if (site) {
     errors.push("SITE_CONFIG.theme.accentText must be a six-digit hex color");
   }
   if (site.features?.showGame) {
-    requireString(site.game?.title, "SITE_CONFIG.game.title");
-    requireString(site.game?.description, "SITE_CONFIG.game.description");
-    requireString(site.game?.duration, "SITE_CONFIG.game.duration");
-    requireString(site.game?.href, "SITE_CONFIG.game.href");
-    validateLocalReference(site.game?.href, "SITE_CONFIG.game.href");
+    const games = Array.isArray(site.games) && site.games.length > 0 ? site.games : (site.game ? [site.game] : []);
+    if (games.length === 0) {
+      errors.push("SITE_CONFIG.games must be a non-empty array (or SITE_CONFIG.game must be set) when features.showGame is true");
+    } else {
+      games.forEach((game, index) => {
+        const label = Array.isArray(site.games) ? `SITE_CONFIG.games[${index}]` : "SITE_CONFIG.game";
+        requireString(game?.title, `${label}.title`);
+        requireString(game?.description, `${label}.description`);
+        requireString(game?.duration, `${label}.duration`);
+        requireString(game?.href, `${label}.href`);
+        validateLocalReference(game?.href, `${label}.href`);
+      });
+    }
   }
 }
 
