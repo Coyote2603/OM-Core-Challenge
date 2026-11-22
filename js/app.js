@@ -403,6 +403,7 @@ function init() {
   if (typeof initOMChallenge === "function") initOMChallenge();
   if (typeof initNVChallenge === "function") initNVChallenge();
   if (typeof initInventoryChallenge === "function") initInventoryChallenge();
+  if (typeof initPQPChallenge === "function") initPQPChallenge();
 }
 
 document.addEventListener("DOMContentLoaded", init);

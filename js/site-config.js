@@ -36,6 +36,18 @@ const SITE_CONFIG = Object.freeze({
       description: "An 8-round simulation — commit to an order quantity before demand is known, then compare your profit against the optimal policy on that same realized demand.",
       href: "newsvendor-challenge.html",
       duration: "About 10 minutes"
+    }),
+    Object.freeze({
+      title: "The Inventory Management Challenge",
+      description: "Worked problems on inventory decisions, starting with the newsvendor model and EOQ — every wrong answer gets a targeted hint.",
+      href: "inventory-challenge.html",
+      duration: "Interactive activity"
+    }),
+    Object.freeze({
+      title: "The Periodic Review, Quality & Planning Challenge",
+      description: "Worked problems on periodic review inventory, quality management, and aggregate production planning — every wrong answer gets a targeted hint.",
+      href: "pqp-challenge.html",
+      duration: "Interactive activity"
     })
   ])
 });

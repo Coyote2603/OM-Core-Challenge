@@ -4,10 +4,11 @@
  * anyone who views the page source or opens dev tools. It only keeps casual
  * visitors out.
  *
- * Each challenge (OM Core, Newsvendor, Inventory Management) has its own
- * code and its own localStorage flag, set here on a correct submission and
- * checked by the inline guard script in that challenge's own <head>. Unlocking
- * one challenge does not unlock the others.
+ * Each challenge (OM Core, Newsvendor, Inventory Management, Periodic
+ * Review/Quality/Planning) has its own code and its own localStorage flag,
+ * set here on a correct submission and checked by the inline guard script
+ * in that challenge's own <head>. Unlocking one challenge does not unlock
+ * the others.
  *
  * To change a code, edit the "code" value below for that entry — nothing
  * else needs to change.
@@ -30,6 +31,12 @@ const CHALLENGE_ACCESS = Object.freeze([
     title: "The Inventory Management Challenge",
     code: "InventoryIIMB2026",
     storageKey: "inventory_access_granted"
+  }),
+  Object.freeze({
+    page: "pqp-challenge.html",
+    title: "The Periodic Review, Quality & Planning Challenge",
+    code: "PQPIIMB2026",
+    storageKey: "pqp_access_granted"
   })
 ]);
 
