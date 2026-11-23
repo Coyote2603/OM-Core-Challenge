@@ -161,46 +161,9 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
     ]
   }),
 
+  // ---- Quality management (Q5-Q9) ----
   Object.freeze({
     id: 5,
-    kicker: "Periodic review — random lead time",
-    title: "Uncertain lead time",
-    context: `<p>An electronics retailer reviews inventory every 6 days. Daily demand has mean 40 and standard deviation 10 units. Supplier lead time is independent of demand, with mean 4 days and standard deviation 2 days.</p>`,
-    question: "Using the standard random-lead-time variance approximation and z = 1.645, find the order-up-to level.",
-    options: [
-      {
-        key: "A",
-        text: "452",
-        correct: false,
-        hint: "This leaves out the extra variance contributed by the lead time itself being uncertain. When lead time is random, protection-period variance has two sources — demand variability over the expected lead time, and lead-time variability acting on the average demand rate — and both need to be combined before taking the square root."
-      },
-      {
-        key: "B",
-        text: "542",
-        correct: true,
-        solution: `<p>With random lead time, the variance of protection-period demand combines both sources of uncertainty:</p>
-          <p>\\[ \\text{Var} = L\\,\\sigma_d^2 + \\bar d^{\\,2}\\,\\sigma_L^2 = 10(10^2) + 40^2(2^2) = 1000 + 6400 = 7400 \\]</p>
-          <p>\\[ S = \\bar d \\cdot L + z\\sqrt{\\text{Var}} = 40(10) + 1.645\\sqrt{7400} \\approx \\textbf{542 units} \\]</p>
-          <p>(Here the base demand term uses the mean lead time of 10 days, which already reflects the 6-day review period being folded into the expected protection period of this problem's setup.)</p>`
-      },
-      {
-        key: "C",
-        text: "416",
-        correct: false,
-        hint: "This understates the safety stock by missing one of the two variance components — most likely the \\(\\bar d^{\\,2}\\sigma_L^2\\) term, which captures how lead-time variability, multiplied by the demand rate, adds its own uncertainty on top of ordinary demand variability."
-      },
-      {
-        key: "D",
-        text: "532",
-        correct: false,
-        hint: "This combines the two variance components by adding their square roots (\\(\\sqrt{L\\sigma_d^2} + \\sqrt{\\bar d^2\\sigma_L^2}\\)) instead of adding the variances first and taking one square root at the end. Variances add; standard deviations don't — combine them as \\(\\sqrt{L\\sigma_d^2 + \\bar d^2\\sigma_L^2}\\)."
-      }
-    ]
-  }),
-
-  // ---- Quality management (Q6-Q10) ----
-  Object.freeze({
-    id: 6,
     kicker: "Quality management — X-bar chart",
     title: "Automotive X-bar chart",
     context: `<p>A shaft manufacturer samples 5 parts every hour. The grand mean is 20 mm and the average range is 0.4 mm. \\(A_2 = 0.577\\) for a subgroup size of 5.</p>`,
@@ -235,7 +198,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 7,
+    id: 6,
     kicker: "Quality management — p-chart",
     title: "Food-packaging p-chart",
     context: `<p>A food company inspects 200 packets daily. Over 20 days, it finds 160 defective packets. On a subsequent day, 18 of 200 packets are defective.</p>`,
@@ -271,7 +234,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 8,
+    id: 7,
     kicker: "Quality management — c-chart",
     title: "Hotel complaints c-chart",
     context: `<p>A hotel averages 4 guest complaints per day. Assume a constant opportunity for complaints each day.</p>`,
@@ -306,7 +269,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 9,
+    id: 8,
     kicker: "Quality management — process capability",
     title: "Tablet process capability",
     context: `<p>Tablet weights have specification limits of 490 and 510 mg. The process mean is 503 mg and the standard deviation is 3 mg.</p>`,
@@ -342,7 +305,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 10,
+    id: 9,
     kicker: "Quality management — hypothesis test on a proportion",
     title: "Electronics defect reduction",
     context: `<p>An electronics manufacturer historically has a 2% defective rate. After a process improvement, 8 of 500 sampled units are found defective.</p>`,
@@ -377,9 +340,9 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
     ]
   }),
 
-  // ---- Aggregate production planning (Q11-Q15) ----
+  // ---- Aggregate production planning (Q10-Q14) ----
   Object.freeze({
-    id: 11,
+    id: 10,
     kicker: "Aggregate planning — level strategy",
     title: "Electronics level plan",
     context: `<p>A consumer electronics firm forecasts monthly demand of 800, 1,200, and 1,000 units. Starting inventory is 200 units and the required final inventory is 100 units.</p>`,
@@ -414,7 +377,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 12,
+    id: 11,
     kicker: "Aggregate planning — chase strategy",
     title: "Auto plant chase plan",
     context: `<p>An auto plant faces monthly demand of 900, 1,200, and 1,500 units. Each worker produces 100 units per month. The initial workforce is 9. Hiring costs Rs. 5,000 and firing costs Rs. 8,000 per worker.</p>`,
@@ -450,7 +413,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 13,
+    id: 12,
     kicker: "Aggregate planning — mixed capacity sources",
     title: "Garment overtime",
     context: `<p>A garment producer must make 2,400 units. Regular capacity is 2,000 units at Rs. 200/unit, overtime capacity is 300 units at Rs. 260/unit, and subcontracting costs Rs. 310/unit.</p>`,
@@ -486,7 +449,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 14,
+    id: 13,
     kicker: "Aggregate planning — level output with inventory",
     title: "FMCG level output",
     context: `<p>An FMCG company faces demand of 1,000, 1,400, and 800 units. It produces 1,200 units each month, starting with zero inventory. Holding cost is Rs. 20 per unit of positive month-end inventory; backlog costs Rs. 50 per unit of negative month-end inventory.</p>`,
@@ -521,7 +484,7 @@ const PQP_CHALLENGE_QUESTIONS = Object.freeze([
   }),
 
   Object.freeze({
-    id: 15,
+    id: 14,
     kicker: "Aggregate planning — comparing capacity options",
     title: "Furniture temporary workers",
     context: `<p>A furniture company needs 1,500 units. Regular capacity is 1,000 units at Rs. 400/unit. Overtime capacity is 300 units at Rs. 520/unit. Subcontracting costs Rs. 600/unit. Each temporary worker costs Rs. 15,000 fixed and can produce 100 units at Rs. 400/unit; at most 3 workers may be hired.</p>`,
